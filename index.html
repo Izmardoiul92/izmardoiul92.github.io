@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Extrageri</title>
+</head>
+<body>
+  <h1>Numere neextrase</h1>
+  <p>Introdu aici numerele extrase (maxim 35):</p>
+  <textarea id="extrase" rows="6" cols="30"></textarea><br>
+  <button onclick="calculeaza()">Afișează numerele neextrase</button>
+  <p id="rezultat"></p>
+
+  <script>
+    function calculeaza() {
+      const toate = Array.from({length: 48}, (_, i) => i + 1);
+      const input = document.getElementById("extrase").value;
+      const extrase = input.split(/[\s,]+/).map(Number).filter(n => !isNaN(n));
+      const neextrase = toate.filter(n => !extrase.includes(n));
+      document.getElementById("rezultat").innerText = "Numere neextrase: " + neextrase.join(", ");
+    }
+  </script>
+</body>
+</html>
